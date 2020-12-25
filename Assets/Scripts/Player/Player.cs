@@ -6,16 +6,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private EnemySpawner _enemies;
 
-    private int _amountOfKillToWin;
-    private int _currentAmountOfKill;
     private PlayerCollisionHandler _enemyTrigger;
 
-    public event UnityAction EndGame;
+    public event UnityAction AllEnemiesKilled;
 
     private void Awake()
     {
         _enemyTrigger = GetComponent<PlayerCollisionHandler>();
-        _amountOfKillToWin = _enemies.Capacity;
     }
 
     private void OnEnable()
@@ -30,9 +27,7 @@ public class Player : MonoBehaviour
 
     private void OnEnemyKilled()
     {
-        _currentAmountOfKill++;
-
-        if (_currentAmountOfKill == _amountOfKillToWin)
-            EndGame?.Invoke();
+        if (_enemies.Capacity == 0)
+            AllEnemiesKilled?.Invoke();
     }
 }

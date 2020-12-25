@@ -4,28 +4,28 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
-    private const float _radius = 4;
+    private const float Radius = 4;
 
-    private Vector3 _targetPosition;
+    private Vector3 _target;
 
     private void Start()
     {
-        _targetPosition = SetNewTargetPosition();
+        _target = GetNewTarget();
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
 
-        if (transform.position == _targetPosition)
+        if (transform.position == _target)
         {
-            _targetPosition = SetNewTargetPosition();
+            _target = GetNewTarget();
         }
     }
 
-    private Vector3 SetNewTargetPosition()
+    private Vector3 GetNewTarget()
     {
-        var targetPosition = Random.insideUnitCircle * _radius;
+        var targetPosition = Random.insideUnitCircle * Radius;
         return targetPosition;
     }
 }

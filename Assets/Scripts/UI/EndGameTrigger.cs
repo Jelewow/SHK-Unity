@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 
-public class EndGame : MonoBehaviour
+public class EndGameTrigger : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private CanvasGroup _canvas;
 
     private void OnEnable()
     {
-        _player.EndGame += OnEndGame;
+        _player.AllEnemiesKilled += OnAllEnemiesKilled;
     }
 
     private void OnDisable()
     {
-        _player.EndGame -= OnEndGame;
+        _player.AllEnemiesKilled -= OnAllEnemiesKilled;
     }
 
-    private void OnEndGame()
+    private void OnAllEnemiesKilled()
     {
         Time.timeScale = 0;
         _canvas.alpha = 1;
