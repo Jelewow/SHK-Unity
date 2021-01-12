@@ -14,7 +14,6 @@ public class BoostTimer : MonoBehaviour
     private IEnumerator WaitToEndBoost(float duration)
     {
         yield return new WaitForSeconds(duration);
-        Debug.Log(duration);
         TimerEnded?.Invoke();
     }
 }
