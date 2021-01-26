@@ -7,15 +7,15 @@ public class EndGameTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.AllEnemiesKilled += OnAllEnemiesKilled;
+        _player.AllEnemiesKilled += Gameover;
     }
 
     private void OnDisable()
     {
-        _player.AllEnemiesKilled -= OnAllEnemiesKilled;
+        _player.AllEnemiesKilled -= Gameover;
     }
 
-    private void OnAllEnemiesKilled()
+    private void Gameover()
     {
         Time.timeScale = 0;
         _canvas.alpha = 1;
